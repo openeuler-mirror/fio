@@ -1,0 +1,44 @@
+diff --git a/fio-3.7/configure b/fio-3.7-edit/configure
+index 9bdc7a1..ed345ba 100755
+--- a/configure
++++ b/configure
+@@ -2462,3 +2462,22 @@ SRCDIR:=`dirname $0`
+ include \$(SRCDIR)/Makefile
+ EOF
+ fi
++
++##########################################
++# check for gettid()
++gettid="no"
++cat > $TMPC << EOF
++#include <unistd.h>
++int main(int argc, char **argv)
++{
++  return gettid();
++}
++EOF
++if compile_prog "" "" "gettid"; then
++  gettid="yes"
++fi
++print_config "gettid" "$gettid"
++
++if test "$gettid" = "yes"; then
++  output_sym "CONFIG_HAVE_GETTID"
++fi
+diff --git a/fio-3.7/os/os-linux.h b/fio-3.7-edit/os/os-linux.h
+index a550bba..90d8929 100644
+--- a/os/os-linux.h
++++ b/os/os-linux.h
+@@ -126,10 +126,12 @@ static inline int ioprio_set(int which, int who, int ioprio_class, int ioprio)
+ 	return syscall(__NR_ioprio_set, which, who, ioprio);
+ }
+ 
++#ifndef CONFIG_HAVE_GETTID
+ static inline int gettid(void)
+ {
+ 	return syscall(__NR_gettid);
+ }
++#endif
+ 
+ #define SPLICE_DEF_SIZE	(64*1024)
+ 
