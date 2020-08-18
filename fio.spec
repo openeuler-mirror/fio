@@ -1,6 +1,6 @@
 Name:           fio
 Version:        3.7
-Release:        4  
+Release:        5 
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
@@ -45,6 +45,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Tue Aug 18 2020 senlin<xiasenlin1@huawei.com> -3.7-5
+- add release for update
+
 * Sat Mar 21 2020 huzunhao<huzunhao@huawei.com> - 3.7-4
 - Type: NA
 - ID: NA
