@@ -1,6 +1,6 @@
 Name:           fio
 Version:        3.7
-Release:        5  
+Release:        6  
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
