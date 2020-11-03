@@ -1,6 +1,6 @@
 Name:           fio
 Version:        3.7
-Release:        7 
+Release:        8
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
@@ -12,6 +12,7 @@ BuildRequires:  libpmem-devel libpmemblk-devel
 %endif
 Patch0000:      fix-glibc-error.patch
 Patch0001:      Modify-python2.7-to-python3-with-requires.patch
+Patch0002:      fio2gnuplot-fix-TabErrors-when-running-with-Python-3.patch
 %description
 fio is a tool used to spawn many threads or processes that perform a specific type
 of io operation specified by the user.It accepts many global parameters inherited
@@ -45,6 +46,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Tue Nov 03 2020 lingsheng <lingsheng@huawei.com> - 3.7-8
+- fio2gnuplot: fix TabErrors when running with Python 3
+
 * Sat Sep 19 2020 yanan li <liyanan032@huawei.com> - 3.7-7
 - Modify python2.7 to python3 with requires
 
