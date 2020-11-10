@@ -1,6 +1,6 @@
 Name:           fio
 Version:        3.7
-Release:        5 
+Release:        6
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
@@ -11,6 +11,7 @@ BuildRequires:  libaio-devel zlib-devel librbd1-devel numactl-devel librdmacm-de
 BuildRequires:  libpmem-devel libpmemblk-devel
 %endif
 
+Requires:       fio-help
 
 %description
 fio is a tool used to spawn many threads or processes that perform a specific type
@@ -45,6 +46,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Mon Nov 09 2020 huanghaitao <huanghaitao8@huawei.com> -3.7-6
+- Make help package required by fio
+
 * Tue Aug 18 2020 senlin<xiasenlin1@huawei.com> -3.7-5
 - add release for update
 
