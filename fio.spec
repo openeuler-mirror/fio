@@ -1,11 +1,11 @@
 Name:           fio
 Version:        3.7
-Release:        5 
+Release:        6
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
 Source:         http://brick.kernel.dk/snaps/%{name}-%{version}.tar.bz2
-BuildRequires:  libaio-devel zlib-devel librbd1-devel numactl-devel librdmacm-devel gdb
+BuildRequires:  libaio-devel zlib-devel librbd1-devel numactl-devel librdmacm-devel
 
 %ifarch x86_64
 BuildRequires:  libpmem-devel libpmemblk-devel
@@ -45,6 +45,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Wed Jul 21 2021 lingsheng <lingsheng@huawei.com> - 3.7-6
+- Remove unnecessary buildrequire gdb
+
 * Tue Aug 18 2020 senlin<xiasenlin1@huawei.com> -3.7-5
 - add release for update
 
