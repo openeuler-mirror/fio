@@ -1,6 +1,6 @@
 Name:           fio
 Version:        3.7
-Release:        10
+Release:        11
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
@@ -13,6 +13,7 @@ BuildRequires:  libpmem-devel libpmemblk-devel
 Patch0000:      fix-glibc-error.patch
 Patch0001:      Modify-python2.7-to-python3-with-requires.patch
 Patch0002:      fio2gnuplot-fix-TabErrors-when-running-with-Python-3.patch
+Patch0003:      gcc-10.patch
 %description
 fio is a tool used to spawn many threads or processes that perform a specific type
 of io operation specified by the user.It accepts many global parameters inherited
@@ -46,6 +47,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Fri Jul 30 2021 linjiaxin5 <linjiaxin5@huawei.com> - 3.7-11
+- Fix failure caused by GCC upgrade to 10
+
 * Wed Jul 21 2021 lingsheng <lingsheng@huawei.com> - 3.7-10
 - Remove unnecessary buildrequire gdb
 
