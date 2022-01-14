@@ -1,9 +1,0 @@
---- a/t/arch.c	2021-08-03 15:35:12.952984598 +0800
-+++ b/t/arch.c	2021-08-03 15:34:47.284542645 +0800
-@@ -1,5 +1,5 @@
- #include "../arch/arch.h"
- 
- unsigned long arch_flags = 0;
--bool tsc_reliable;
-+extern bool tsc_reliable;
- int arch_random;
