@@ -1,19 +1,15 @@
 Name:           fio
-Version:        3.7
-Release:        11
+Version:        3.29
+Release:        1
 Summary:        Versatile IO workload generator
 License:        GPLv2
 URL:            http://git.kernel.dk/?p=fio.git;a=summary
 Source:         http://brick.kernel.dk/snaps/%{name}-%{version}.tar.bz2
-BuildRequires:  libaio-devel zlib-devel librbd1-devel numactl-devel librdmacm-devel gcc
+BuildRequires:  libaio-devel python3-devel zlib-devel librbd1-devel numactl-devel librdmacm-devel gcc
 
 %ifarch x86_64
 BuildRequires:  libpmem-devel libpmemblk-devel
 %endif
-Patch0000:      fix-glibc-error.patch
-Patch0001:      Modify-python2.7-to-python3-with-requires.patch
-Patch0002:      fio2gnuplot-fix-TabErrors-when-running-with-Python-3.patch
-Patch0003:      gcc-10.patch
 %description
 fio is a tool used to spawn many threads or processes that perform a specific type
 of io operation specified by the user.It accepts many global parameters inherited
@@ -27,6 +23,13 @@ Help document for the fio.
 
 %prep
 %autosetup -p1
+
+pathfix.py -i %{__python3} -pn \
+ tools/fio_jsonplus_clat2csv \
+ tools/fiologparser.py \
+ tools/hist/*.py \
+ tools/plot/fio2gnuplot \
+ t/steadystate_tests.py
 
 %build
 ./configure --disable-optimizations
@@ -47,6 +50,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Fri Jan 14 2022 caodongxia <caodongxia@huawei.com> - 3.29-1
+- Upgrade 3.29
+
 * Fri Jul 30 2021 linjiaxin5 <linjiaxin5@huawei.com> - 3.7-11
 - Fix failure caused by GCC upgrade to 10
 
