@@ -1,5 +1,5 @@
 Name:           fio
-Version:        3.29
+Version:        3.30
 Release:        1
 Summary:        Versatile IO workload generator
 License:        GPLv2
@@ -40,16 +40,19 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %make_install prefix=%{_prefix} mandir=%{_mandir}
 
 %files
-%doc README COPYING
+%doc COPYING
 %dir %{_datadir}/%{name}
 %{_bindir}/*
 %{_datadir}/%{name}/*
 
 %files help
-%doc REPORTING-BUGS HOWTO examples MORAL-LICENSE GFIO-TODO SERVER-TODO STEADYSTATE-TODO
+%doc REPORTING-BUGS examples MORAL-LICENSE GFIO-TODO SERVER-TODO STEADYSTATE-TODO
 %{_mandir}/man1/*
 
 %changelog
+* Sun Aug 14 2022 tianlijing <tianlijing@kylinos.cn> - 3.30-1
+- upgrade to 3.30
+
 * Fri Jan 14 2022 caodongxia <caodongxia@huawei.com> - 3.29-1
 - Upgrade 3.29
 
