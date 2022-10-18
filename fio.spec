@@ -1,5 +1,5 @@
 Name:           fio
-Version:        3.30
+Version:        3.32
 Release:        1
 Summary:        Versatile IO workload generator
 License:        GPLv2
@@ -50,6 +50,9 @@ export EXTFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_mandir}/man1/*
 
 %changelog
+* Tue Oct 18 2022 hkgy <kaguyahatu@outlook.com> - 3.32-1
+- Upgrade to 3.32
+
 * Sun Aug 14 2022 tianlijing <tianlijing@kylinos.cn> - 3.30-1
 - upgrade to 3.30
 
